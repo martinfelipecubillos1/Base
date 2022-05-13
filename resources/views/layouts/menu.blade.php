@@ -20,4 +20,8 @@
     <a class="nav-link" href="/proveedores">
         <i class=" fas fa-blog"></i><span>Proveedores</span>
     </a>
+
+    <a class="nav-link" href="/responsables">
+        <i class=" fas fa-blog"></i><span>Responsables</span>
+    </a>
 </li>

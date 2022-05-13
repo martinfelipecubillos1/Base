@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading"> Proveedores </h3>
+            <h3 class="page__heading"> Responsables </h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -13,7 +13,7 @@
 
 
                         @can('crear-unidad')
-                        <a class="btn btn-warning" href="{{ route('proveedores.create') }}">Nuevo</a>
+                        <a class="btn btn-warning" href="{{ route('responsables.create') }}">Nuevo</a>
                         @endcan
 
                         <table class="table table-striped mt-2">
@@ -24,17 +24,17 @@
                                     <th style="color:#fff;">acciones</th>
                               </thead>
                               <tbody>
-                            @foreach ($Proveedores as $Proveedor)
+                            @foreach ($responsables as $responsable)
                             <tr>
-                                <td style="display: none;">{{ $Proveedor->id }}</td>
-                                <td>{{ $Proveedor->codigoproveedor }}</td>
-                                <td>{{ $Proveedor->nombreproveedor }}</td>
-                                <td>{{ $Proveedor->contacto }}</td>
+                                <td style="display: none;">{{ $responsable->id }}</td>
+                                <td>{{ $responsable->codigoproveedor }}</td>
+                                <td>{{ $responsable->nombreproveedor }}</td>
+                                <td>{{ $responsables->contacto }}</td>
                                 <td>
 
-                                    <form action="{{ route('proveedores.destroy',$Proveedor->id) }}" method="POST">
+                                    <form action="{{ route('responsables.destroy',$responsable->id) }}" method="POST">
                                         @can('editar-Compania')
-                                        <a class="btn btn-info" href="{{ route('proveedores.edit', $Proveedor->id) }}">Editar</a>
+                                        <a class="btn btn-info" href="{{ route('responsables.edit', $responsable->id) }}">Editar</a>
                                         @endcan
 
                                         @csrf
@@ -53,7 +53,7 @@
 
                         <!-- Ubicamos la paginacion a la derecha -->
                         <div class="pagination justify-content-end">
-                            {!! $Proveedores->links() !!}
+                            {!! $responsables->links() !!}
                         </div>
                         </div>
                     </div>

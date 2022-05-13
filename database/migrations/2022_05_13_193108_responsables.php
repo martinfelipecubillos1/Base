@@ -13,7 +13,15 @@ class Responsables extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('responsables',function(Blueprint $table){
+            $table->id();
+            $table->String('Cedula')->unique();
+            $table->String('Nombre');
+            $table->String('Correo');
+            $table->String('Numero');
+            $table->String('genero');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class Responsables extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('responsables');
     }
 }

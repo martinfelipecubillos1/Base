@@ -14,7 +14,8 @@ class ResponsableController extends Controller
      */
     public function index()
     {
-        //
+        $responsables = Responsable::paginate(5);
+        return view('responsables.index', compact('responsables'));
     }
 
     /**
