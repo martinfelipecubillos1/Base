@@ -27,7 +27,7 @@
                             @foreach ($Proveedores as $Proveedor)
                             <tr>
                                 <td style="display: none;">{{ $Proveedor->id }}</td>
-                                <td>{{ $Proveedor->codigoproveedor }}</td>
+                                <td>{{ $Proveedor->id }}</td>
                                 <td>{{ $Proveedor->nombreproveedor }}</td>
                                 <td>{{ $Proveedor->contacto }}</td>
                                 <td>

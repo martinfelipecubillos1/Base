@@ -42,7 +42,6 @@ class ProveedorController extends Controller
     {
 
         request()->validate([
-            'codigoproveedor' => 'required|unique:proveedors',
             'nombreproveedor' =>'required',
             'contacto' =>'required',
             ]);

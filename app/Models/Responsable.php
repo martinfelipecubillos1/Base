@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Responsable extends Model
 {
     use HasFactory;
+
+    protected $table = 'responsables';
+
+    protected $fillable = ['id','cedula', 'nombre', 'cargo', 'correo','numero'];
 }

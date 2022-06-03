@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar Proveedores</h3>
+            <h3 class="page__heading">Editar responsables</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,30 +23,64 @@
                             </div>
                         @endif
 
-                        {!! Form::model($proveedor, ['method' => 'PATCH','route' => ['proveedores.update', $proveedor->id]]) !!}
+                        {!! Form::model($responsable, ['method' => 'PATCH','route' => ['responsables.update', $responsable->id]]) !!}
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="">codigo:</label>
-
-                                <option value="{{$proveedor->id}}">{{$proveedor->codigoproveedor}}</option>
+                                <option value="{{$responsable->id}}">{{$responsable->cedula}}</option>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="">nombre:</label>
                                 <br/>
-                             {!! Form::text('nombreproveedor', null, array('class' => 'form-control')) !!}
+                             {!! Form::text('nombre', null, array('class' => 'form-control')) !!}
                              <br/>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="">contacto:</label>
+                                <label for="contenido">Cargo</label>
+                                <select class="form-control" name="cargo" id="cargo">
+                                    @foreach ($cargos as $cargo)
+                                        @if ($cargo->id == $responsable->cargo)
+                                            <option value="{{ $cargo->id }}"> {{ $cargo->nombrecargo }}</option>
+                                     @endif
+                                    @endforeach
+
+                                    @foreach ($cargos as $cargo)
+                                    @if ($cargo->id == $responsable->cargo)
+                                    @else
+                                    <option value="{{ $cargo->id }}"> {{ $cargo->nombrecargo }}</option>
+                                       </option>
+                                       @endif>
+                                        @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="">Correo:</label>
                                 <br/>
-                             {!! Form::text('contacto', null, array('class' => 'form-control')) !!}
+                             {!! Form::text('correo', null, array('class' => 'form-control')) !!}
+                             <br/>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="">Numero:</label>
+                                <br/>
+                             {!! Form::text('numero', null, array('class' => 'form-control')) !!}
                              <br/>
                             </div>
                         </div>

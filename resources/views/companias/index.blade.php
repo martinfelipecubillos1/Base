@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading"> companias </h3>
+            <h3 class="page__heading"> Companias </h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -27,7 +27,7 @@
                             @foreach ($Companias as $Compania)
                             <tr>
                                 <td style="display: none;">{{ $Compania->id }}</td>
-                                <td>{{ $Compania->codigocompania }}</td>
+                                <td>{{ $Compania->id }}</td>
                                 <td>{{ $Compania->nombrecompania }}</td>
                                 <td>{{ $Compania->localizacion }}</td>
                                 <td>

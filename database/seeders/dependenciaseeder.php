@@ -14,16 +14,16 @@ class dependenciaseeder extends Seeder
     public function run()
     {
         $dependencia =  [
-            ['codigodependencia'=> '01',
-            'nombredependencia'=> 'Oficina tic',],
+            ['nombredependencia'=> 'Oficina tic',
+            'compania' => '1',],
+
+            ['nombredependencia'=> 'Oficina de salud',
+            'compania' => '1',],
 
 
-            ['codigodependencia'=> '02',
-            'nombredependencia'=> 'Oficina de salud',],
 
-
-            ['codigodependencia'=> '03',
-            'nombredependencia'=> 'movilidad',]
+            ['nombredependencia'=> 'movilidad',
+            'compania' => '1',],
 
 
         ];

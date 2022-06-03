@@ -15,7 +15,6 @@ class Proveedores extends Migration
     {
         Schema::create('proveedors',function(Blueprint $table){
             $table->id();
-            $table->String('codigoproveedor')->unique();
             $table->String('nombreproveedor');
             $table->String('contacto');
             $table->timestamps();

@@ -15,20 +15,16 @@ class Responsables extends Migration
     {
         Schema::create('responsables',function(Blueprint $table){
             $table->id();
-            $table->String('Cedula')->unique();
-            $table->String('Nombre');
-            $table->String('Correo');
-            $table->String('Numero');
-            $table->String('genero');
+            $table->String('cedula')->unique();
+            $table->String('nombre');
+            $table->unsignedBigInteger('cargo');
+            $table->String('correo')->unique();
+            $table->String('numero');
+            $table->foreign('cargo')->references('id')->on('cargos');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('responsables');

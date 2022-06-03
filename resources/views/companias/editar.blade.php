@@ -28,7 +28,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="">codigo:</label>
-                                <option value="{{$compania->id}}">{{$compania->codigocompania}}</option>
+                                <option value="{{$compania->id}}">{{$compania->id}}</option>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">

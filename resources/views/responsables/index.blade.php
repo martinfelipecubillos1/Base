@@ -18,18 +18,22 @@
 
                         <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">
-                                    <th style="color:#fff;">Codigo</th>
+                                    <th style="color:#fff;">Cedula</th>
                                     <th style="color:#fff;">Nombre</th>
-                                    <th style="color:#fff;">Contacto</th>
-                                    <th style="color:#fff;">acciones</th>
+                                    <th style="color:#fff;">Cargo</th>
+                                    <th style="color:#fff;">Correo</th>
+                                    <th style="color:#fff;">Numero</th>
+                                    <th style="color:#fff;">Acciones</th>
                               </thead>
                               <tbody>
                             @foreach ($responsables as $responsable)
                             <tr>
                                 <td style="display: none;">{{ $responsable->id }}</td>
-                                <td>{{ $responsable->codigoproveedor }}</td>
-                                <td>{{ $responsable->nombreproveedor }}</td>
-                                <td>{{ $responsables->contacto }}</td>
+                                <td>{{ $responsable->cedula }}</td>
+                                <td>{{ $responsable->nombre }}</td>
+                                <td>{{ $responsable->nombrecargo }}</td>
+                                <td>{{ $responsable->correo }}</td>
+                                <td>{{ $responsable->numero }}</td>
                                 <td>
 
                                     <form action="{{ route('responsables.destroy',$responsable->id) }}" method="POST">
@@ -53,7 +57,7 @@
 
                         <!-- Ubicamos la paginacion a la derecha -->
                         <div class="pagination justify-content-end">
-                            {!! $responsables->links() !!}
+
                         </div>
                         </div>
                     </div>

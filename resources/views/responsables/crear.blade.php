@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Proveedores</h3>
+            <h3 class="page__heading">Crear responsables</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,28 +23,48 @@
                             </div>
                         @endif
 
-                    <form action="{{ route('proveedores.store') }}" method="POST">
+                    <form action="{{ route('responsables.store') }}" method="POST">
                         @csrf
                         <div class="row">
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                   <label for="titulo">codigo</label>
-                                   <input type="text" name="codigoproveedor" class="form-control">
+                                   <label for="titulo">cedula</label>
+                                   <input type="text" name="cedula" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-floating">
                                 <label for="contenido">nombre</label>
-                                <input type="text" name="nombreproveedor" class="form-control">
+                                <input type="text" name="nombre" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="contenido">Cargo</label>
+                                    <select class="form-control" name="cargo" id="cargo">
+                                        <option value=""> Seleccione.</option>
+                                        @foreach ($cargos as $cargo)
+                                            <option value="{{$cargo->id}}">{{$cargo->nombrecargo}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-floating">
+                                <label for="contenido">correo</label>
+                                <input type="text" name="correo" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-floating">
-                                <label for="contenido">contacto</label>
-                                <input type="text" name="contacto" class="form-control">
+                                <label for="contenido">numero</label>
+                                <input type="text" name="numero" class="form-control">
                                 </div>
 
 <br>

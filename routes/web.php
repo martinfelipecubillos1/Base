@@ -10,6 +10,18 @@ use App\Http\Controllers\CompaniaController;
 use App\Http\Controllers\DependenciaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ResponsableController;
+use App\Http\Controllers\cargoController;
+use App\Http\Controllers\ElementoController;
+use App\Http\Controllers\ElementoinventarioController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\ResponsablespordependenciaController;
+use App\Http\Controllers\UnidadController;
+use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\MovimientoController;
+use App\Http\Controllers\MovimientoinvController;
+use App\Http\Controllers\ReferenciaController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,4 +53,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('dependencias', DependenciaController::class);
     Route::resource('proveedores', ProveedorController::class);
     Route::resource('responsables', ResponsableController::class);
+    Route::resource('cargos', cargoController::class);
+    Route::resource('responsablespordependencias', ResponsablespordependenciaController::class);
+    Route::resource('unidades', UnidadController::class);
+    Route::resource('elementos', ElementoController::class);
+    Route::resource('marcas', MarcaController::class);
+    Route::resource('referencias', ReferenciaController::class);
+    Route::resource('movimientos', MovimientoController::class);
+    Route::resource('estados', EstadoController::class);
+    Route::resource('movimientoinvs', MovimientoinvController::class);
+    Route::resource('elementosinv', ElementoinventarioController::class);
+
+
 });

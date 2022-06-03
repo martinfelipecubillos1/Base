@@ -20,7 +20,10 @@ class DependenciaController extends Controller
 
     public function index()
     {
-        $Dependencias = Dependencia::paginate(5);
+        $Dependencias = DB::table('dependencias')
+            ->join('companias', 'companias.id', '=', 'dependencias.compania')
+            ->select('dependencias.*', 'companias.nombrecompania',)
+            ->get();
         return view('dependencias.index', compact('Dependencias'));
     }
 
@@ -28,9 +31,9 @@ class DependenciaController extends Controller
 
     public function create()
     {
-
+        $companias = Compania::all();
         //$codigocompania = Compania::pluck('nombrecompania','id')->all();
-        return view('dependencias.crear');
+        return view('dependencias.crear', compact('companias'));
     }
 
     /**
@@ -42,12 +45,12 @@ class DependenciaController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'codigodependencia' => 'required|unique:dependencias',
             'nombredependencia' => 'required',
+            'compania' => 'required',
         ]);
 
         //  $query = $request->all();
-      // dd($request->all());
+        // dd($request->all());
         Dependencia::create($request->all());
         //return response()->json($query);
         return redirect()->route('dependencias.index');
@@ -75,8 +78,8 @@ class DependenciaController extends Controller
     public function edit($id)
     {
         $dependencia = Dependencia::find($id);
-
-        return view('dependencias.editar', compact('dependencia'));
+        $companias = Compania::all();
+        return view('dependencias.editar', compact('dependencia', 'companias'));
     }
 
     /**
@@ -89,12 +92,11 @@ class DependenciaController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-           // 'codigodependencia' => 'required',
+            // 'codigodependencia' => 'required',
             'nombredependencia' => 'required',
-
-
+            'compania' => 'required',
         ]);
-     //   dd($request->all());
+        //   dd($request->all());
 
         $compania = Dependencia::find($id);
         $compania->update($request->all());

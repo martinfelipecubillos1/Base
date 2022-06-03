@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cargo;
 use App\Models\Responsable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ResponsableController extends Controller
 {
@@ -14,7 +16,11 @@ class ResponsableController extends Controller
      */
     public function index()
     {
-        $responsables = Responsable::paginate(5);
+        $responsables = DB::table('responsables')
+            ->join('cargos', 'cargos.id', '=', 'responsables.cargo')
+            ->select('responsables.*', 'cargos.nombrecargo',)
+            ->get();
+
         return view('responsables.index', compact('responsables'));
     }
 
@@ -25,7 +31,8 @@ class ResponsableController extends Controller
      */
     public function create()
     {
-        //
+        $cargos = cargo::all();
+        return view('responsables.crear', compact('cargos',));
     }
 
     /**
@@ -36,7 +43,18 @@ class ResponsableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        request()->validate([
+            'cedula' => 'required|unique:responsables',
+            'nombre' => 'required',
+            'cargo' => 'required',
+            'correo' => 'required|unique:responsables',
+            'numero' => 'required',
+        ]);
+
+        Responsable::create($request->all());
+
+        return redirect()->route('responsables.index');
     }
 
     /**
@@ -56,31 +74,46 @@ class ResponsableController extends Controller
      * @param  \App\Models\Responsable  $responsable
      * @return \Illuminate\Http\Response
      */
-    public function edit(Responsable $responsable)
+    public function edit($id)
     {
-        //
+        $responsable = Responsable::find($id);
+        $cargos = cargo::all();
+        return view('responsables.editar', compact('cargos', 'responsable'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Responsable  $responsable
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Responsable $responsable)
+    public function update(Request $request, $id)
     {
-        //
+
+        request()->validate([
+            // 'codigoproveedor' => 'required|unique:proveedors',
+            'nombre' => 'required',
+            'cargo' => 'required',
+            'numero' => 'required',
+        ]);
+        //dd($request->all());
+
+        $responsable = responsable::find($id);
+        $responsable->update($request->all());
+        return redirect()->route('responsables.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Responsable  $responsable
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Responsable $responsable)
+    public function destroy($id)
     {
-        //
+        DB::table('responsables')->where('id', $id)->delete();
+
+        return redirect()->route('responsables.index');
     }
 }

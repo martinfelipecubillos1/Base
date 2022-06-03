@@ -16,19 +16,15 @@ class Dependencias extends Migration
         {
             Schema::create('dependencias',function(Blueprint $table){
             $table->id();
-            $table->String('codigodependencia');
             $table->String('nombredependencia');
-
+            $table->unsignedBigInteger('compania');
+            $table->foreign('compania')->references('id')->on('companias');
             $table->timestamps();
         });
         }
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('dependencias');

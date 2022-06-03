@@ -16,16 +16,13 @@ class companiaseeder extends Seeder
     public function run()
     {
         $compania =  [
-            ['codigocompania'=> '01',
-            'nombrecompania'=> 'Alcaldia',
+            ['nombrecompania'=> 'Alcaldia',
             'localizacion' => 'Fusagasuga'],
 
-            ['codigocompania'=> '02',
-            'nombrecompania'=> 'Procuraduria',
+            ['nombrecompania'=> 'Procuraduria',
             'localizacion' => 'Fusagasuga'],
 
-            ['codigocompania'=> '03',
-            'nombrecompania'=> 'Fiscalia',
+            ['nombrecompania'=> 'Fiscalia',
             'localizacion' => 'Fusagasuga'],
 
         ];

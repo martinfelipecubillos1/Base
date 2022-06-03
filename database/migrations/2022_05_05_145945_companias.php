@@ -15,18 +15,13 @@ class Companias extends Migration
     {
         Schema::create('companias',function(Blueprint $table){
         $table->id();
-        $table->String('codigocompania')->unique();
         $table->String('nombrecompania');
         $table->String('localizacion');
         $table->timestamps();
     });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('companias');

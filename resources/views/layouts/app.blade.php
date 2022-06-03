@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>@yield('title') | {{ config('app.name') }}</title>
@@ -21,6 +22,7 @@
     @yield('page_css')
 
 
+
     @yield('css')
 </head>
 <body>
@@ -28,8 +30,10 @@
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
         <div class="navbar-bg"></div>
-        <nav class="navbar navbar-expand-lg main-navbar">
+        <nav class="navbar navbar-expand-lg main-navbar" >
+
             @include('layouts.header')
+
 
         </nav>
         <div class="main-sidebar main-sidebar-postion">

@@ -27,12 +27,7 @@
                         @csrf
                         <div class="row">
 
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                   <label for="titulo">codigo</label>
-                                   <input type="text" name="codigodependencia" class="form-control">
-                                </div>
-                            </div>
+
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-floating">
@@ -41,9 +36,21 @@
                                 </div>
                             </div>
 
+
+                         <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="contenido">compañia</label>
+                                <select class="form-control" name="compania" id="compania">
+                                    <option value=""> Seleccione.</option>
+                                    @foreach ($companias as $compania)
+                                        <option value="{{$compania->id}}">{{$compania->nombrecompania}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 <br>
                             <button type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
+
                         </div>
                     </form>
 

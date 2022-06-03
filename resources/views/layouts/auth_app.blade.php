@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="login-brand">
-                        <img src="{{ asset('img/logo.png') }}" alt="logo" width="100"
+                        <img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8TUwvfomI3gIKN_aYu0srr2GuEjiMDtQz4-YC99ToPyl11g2d_7NGsmjDZ91wOlSQcsE&usqp=CAU') }}" alt="logo" width="300"
                              class="shadow-light">
                     </div>
                     @yield('content')

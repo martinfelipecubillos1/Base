@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="">codigo:</label>
 
-                                <option value="{{$proveedor->id}}">{{$proveedor->codigoproveedor}}</option>
+                                <option value="{{$proveedor->id}}">{{$proveedor->id}}</option>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
