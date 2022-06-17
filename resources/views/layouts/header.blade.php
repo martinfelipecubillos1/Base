@@ -21,9 +21,13 @@
                 <div class="dropdown-title">
                     Bienvenido, {{\Illuminate\Support\Facades\Auth::user()->name}}</div>
 
-                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                    {{ csrf_field() }}
-                </form>
+                    <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
+                    onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
+                     <i class="fas fa-sign-out-alt"></i> Logout
+                 </a>
+                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                     {{ csrf_field() }}
+                 </form>
             </div>
         </li>
     @else

@@ -16,8 +16,11 @@ class Elementos extends Migration
         Schema::create('elementos',function(Blueprint $table){
             $table->id();
             $table->String('nombreelemento');
-            $table->String('color');
-
+            $table->unsignedBigInteger('codigosubgrupo');
+            $table->unsignedBigInteger('marca');
+            $table->longText('descripcion');
+            $table->foreign('codigosubgrupo')->references('id')->on('subgrupoelementos');
+            $table->foreign('marca')->references('id')->on('marcas');
             $table->timestamps();
         });
     }

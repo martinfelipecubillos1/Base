@@ -21,15 +21,16 @@ class DatabaseSeeder extends Seeder
         $this->call(dependenciaseeder::class);
         $this->call(responsableseeder::class);
 
-
-
+        $this->call(grupoelementoseeder::class);
+        $this->call(subgrupoelementoseeder::class);
+        $this->call(marcaseeder::class);
         $this->call(unidadseeder::class);
         $this->call(elementoseeder::class);
-        $this->call(marcaseeder::class);
+
         $this->call(referenciaseeder::class);
 
-        $this->call(elementoinventarioseeder::class);
-
+      //  $this->call(elementoinventarioseeder::class);
+      $this->call(tipocontratoseeder::class);
         $this->call(movimientoseeder::class);
         $this->call(estadoseeder::class);
         $this->call(proveedorseeder::class);
@@ -37,8 +38,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SuperAdminseeder::class);
         $this->call(SeederTablaPermisos::class);
         $this->call(responsablespordependenciasseeder::class);
-
-        $this->call(movimientoinvseeder::class);
+        $this->call(colorseeder::class);
+       // $this->call(movimientoinvseeder::class);
 
 
 

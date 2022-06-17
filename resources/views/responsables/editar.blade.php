@@ -55,7 +55,7 @@
                                     @if ($cargo->id == $responsable->cargo)
                                     @else
                                     <option value="{{ $cargo->id }}"> {{ $cargo->nombrecargo }}</option>
-                                       </option>
+
                                        @endif>
                                         @endforeach
                                 </select>

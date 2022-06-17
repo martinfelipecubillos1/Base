@@ -37,7 +37,7 @@
                                     @foreach ($Movimientoinvs as $Movimientoinv)
                                         <tr>
                                             <td style="display: none;">{{ $Movimientoinv->id }}</td>
-                                            <td>{{ $Movimientoinv->nombre }}</td>
+                                            <td>{{ $Movimientoinv->nombre}}</td>
                                             <td>{{ $Movimientoinv->nombreelemento }}</td>
                                             <td>{{ $Movimientoinv->nombreestado }}</td>
                                             <td>{{ $Movimientoinv->nombreproveedor }}</td>

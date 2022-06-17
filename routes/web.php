@@ -11,16 +11,19 @@ use App\Http\Controllers\DependenciaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ResponsableController;
 use App\Http\Controllers\cargoController;
+use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\ElementoController;
 use App\Http\Controllers\ElementoinventarioController;
 use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\GrupoelementoController;
 use App\Http\Controllers\ResponsablespordependenciaController;
 use App\Http\Controllers\UnidadController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\MovimientoController;
 use App\Http\Controllers\MovimientoinvController;
 use App\Http\Controllers\ReferenciaController;
-
+use App\Http\Controllers\SubgrupoelementoController;
+use App\Http\Livewire\Contratos;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +39,9 @@ use App\Http\Controllers\ReferenciaController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -56,13 +62,18 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('cargos', cargoController::class);
     Route::resource('responsablespordependencias', ResponsablespordependenciaController::class);
     Route::resource('unidades', UnidadController::class);
-    Route::resource('elementos', ElementoController::class);
     Route::resource('marcas', MarcaController::class);
     Route::resource('referencias', ReferenciaController::class);
     Route::resource('movimientos', MovimientoController::class);
     Route::resource('estados', EstadoController::class);
     Route::resource('movimientoinvs', MovimientoinvController::class);
     Route::resource('elementosinv', ElementoinventarioController::class);
+    Route::resource('elementos', ElementoController::class);
+    Route::resource('grupos', GrupoelementoController::class);
+    Route::resource('subgrupos', SubgrupoelementoController::class);
+    Route::resource('contratos2', ContratoController::class);
+
+    Route::get('contratos',Contratos::class);
 
 
 });

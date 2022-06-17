@@ -5,14 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Elemento extends Model
+class Subgrupoelemento extends Model
 {
-
     use HasFactory;
-
-    protected $fillable = ['id', 'nombreelemento','descripcion','codigosubgrupo','marca'];
-
-
+    protected $fillable = ['id','nombresubgrupo', 'codigogrupo','color',];
 }
-
-

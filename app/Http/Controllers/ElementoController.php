@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Elemento;
+use App\Models\Grupoelemento;
+use App\Models\Marca;
+use App\Models\Subgrupoelemento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +18,19 @@ class ElementoController extends Controller
      */
     public function index()
     {
-        $Elementos = Elemento::paginate(5);
-       return view('elementos.index', compact('Elementos'));
+
+
+        $Grupos = Grupoelemento::all(); // $responsablespordependencias = responsablespordependencia::paginate(5);
+
+        $Elementos = DB::table('elementos')
+            ->join('subgrupoelementos', 'subgrupoelementos.id', '=', 'elementos.codigosubgrupo')
+            ->join('grupoelementos', 'grupoelementos.id', '=', 'subgrupoelementos.codigogrupo')
+            ->select('elementos.*', 'subgrupoelementos.nombresubgrupo', 'grupoelementos.nombregrupo', 'grupoelementos.id as idg')
+            ->get();
+
+
+
+        return view('elementos.index', compact('Grupos', 'Elementos'));
     }
 
     public function create()
@@ -26,47 +40,64 @@ class ElementoController extends Controller
 
     public function store(Request $request)
     {
+        //dd($request->all());
         request()->validate([
-
-            'nombreelemento' =>'required',
-            'color' =>'required',
-            ]);
-            if(request('nombreelemento'))
+            'nombreelemento' => 'required',
+            'marca' => 'required',
+            'descripcion' => 'required',
+        ]);
+        if (request('nombreelemento'))
             Elemento::create($request->all());
 
-    return redirect()->route('elementos.index');
+        return redirect()->route('grupos.index');
     }
 
     public function show($id)
     {
-        //
+
+        $Subgrupos = Subgrupoelemento::all();
+
+        $Elementos = DB::table('elementos')
+            ->join('subgrupoelementos', 'subgrupoelementos.id', '=', 'elementos.codigosubgrupo')
+            ->join('marcas', 'marcas.id', '=', 'elementos.marca')
+            ->join('grupoelementos', 'grupoelementos.id', '=', 'subgrupoelementos.codigogrupo')
+            ->where('subgrupoelementos.id', '=', $id)
+            ->select('elementos.*', 'subgrupoelementos.nombresubgrupo', 'grupoelementos.nombregrupo', 'grupoelementos.id as idg', 'marcas.nombremarca')
+            ->paginate(10);
+
+
+        $nom = $id;
+
+        return view('elementos.show', compact('Elementos', 'nom', 'Subgrupos'));
     }
 
     public function edit($id)
     {
+        $marcas = Marca::all();
         $elemento = Elemento::find($id);
-        return view('elementos.editar', compact('elemento'));
+        return view('elementos.editar', compact('elemento', 'marcas'));
     }
 
     public function update(Request $request, $id)
     {
         request()->validate([
-          //  'codigounidad' => 'required|unique:unidades',
-           // 'codigoelemento' => 'required|unique:unidades',
-            'nombreelemento' =>'required',
+            //  'codigounidad' => 'required|unique:unidades',
+            // 'codigoelemento' => 'required|unique:unidades',
+            'nombreelemento' => 'required',
+            'descripcion' => 'required',
+        ]);
 
-            ]);
-            $cambio = $request->all();
-            $compania = Elemento::find($id);
-            $compania->update($request->all());
+       // dd($request->all());
+        $elemento = Elemento::find($id);
+        $elemento->update($request->all());
 
-    return redirect()->route('elementos.index');
+        return redirect()->route('grupos.index');
     }
 
     public function destroy($id)
     {
         DB::table('elementos')->where('id', $id)->delete();
 
-        return redirect()->route('elementos.index');
+        return redirect()->route('grupos.index');
     }
 }

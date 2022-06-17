@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
 class elementoseeder extends Seeder
 {
     /**
@@ -16,22 +17,28 @@ class elementoseeder extends Seeder
 
 
 
-            $elemento =  [
-                [
-                'nombreelemento'=> 'Computador',
-                'color' => '4099ff', ],
+        $elemento =  [
+            [
+                'nombreelemento' => 'Computador',
+                'codigosubgrupo' => 3,
+                'marca' => 1,
+                'descripcion' => "Unidad de computo: 4G de Ram, 1 T de almacenamiento, color plateado de 15 pulgadas",
+            ],
 
-                [
-                'nombreelemento'=> 'Esfero',
-                'color' => 'd7e052',],
+            [
+                'nombreelemento' => 'mesa',
+                'codigosubgrupo' => 1,
+                'marca' => 1,
+                'descripcion' => "Mesa de madera con soportes de metal, medidas: 1.50*140, color cafe ",
+            ],
+            [
+                'nombreelemento' => 'silla',
+                'codigosubgrupo' => 2,
+                'marca' => 1,
+                'descripcion' => "silla de metal con asiento alchado, medidas: 90*60, color negro",
+            ],
 
-                [
-                'nombreelemento'=> 'Impresora',
-                'color' => 'FF5370',],
-
-            ];
-            DB::table('elementos')->insert($elemento);
-
-
+        ];
+        DB::table('elementos')->insert($elemento);
     }
 }

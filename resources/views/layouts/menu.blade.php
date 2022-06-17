@@ -21,22 +21,12 @@
         <i class=" fas fa-users"></i><span>Dependencias</span>
     </a>
 
-    <a class="nav-link" href="/responsables">
-        <i class=" fas fa-blog"></i><span>Responsables</span>
-    </a>
-
     <a class="nav-link" href="/cargos">
         <i class=" fas fa-briefcase"></i><span>Cargos</span>
     </a>
 
-
-
     <a class="nav-link" href="/unidades">
         <i class=" fas fa-blog"></i><span>Unidades</span>
-    </a>
-
-    <a class="nav-link" href="/elementos">
-        <i class=" fas fa-blog"></i><span>Elementos</span>
     </a>
 
     <a class="nav-link" href="/marcas">
@@ -73,6 +63,17 @@
         <i class=" fas fa-blog"></i><span>Movimientos del inventario</span>
     </a>
 
+    <a class="nav-link" href="/grupos">
+        <i class=" fas fa-users"></i><span>Grupos de Elementos</span>
+    </a>
 
+
+    <a class="nav-link" href="/contratos">
+        <i class=" fas fa-blog"></i><span>Contratos</span>
+    </a>
+
+    <a class="nav-link" href="/responsables">
+        <i class=" fas fa-blog"></i><span>Responsables</span>
+    </a>
 
 </li>

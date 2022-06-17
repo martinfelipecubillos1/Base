@@ -16,6 +16,8 @@ class marcaseeder extends Seeder
     {
         $marca =  [
             [
+                'nombremarca'=> 'NA',],
+            [
             'nombremarca'=> 'activision',],
 
             [

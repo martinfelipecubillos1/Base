@@ -17,13 +17,13 @@ class Elementoinventarios extends Migration
             $table->id();
             $table->unsignedBigInteger('elemento');
             $table->unsignedBigInteger('marca');
-            $table->unsignedBigInteger('referencia');
             $table->unsignedBigInteger('unidad');
             $table->unsignedBigInteger('placainterna');
-            $table->unsignedBigInteger('placaexterna');
+            $table->unsignedBigInteger('precio');
+            $table->unsignedBigInteger('cantidad');
+
             $table->foreign('elemento')->references('id')->on('elementos');
             $table->foreign('marca')->references('id')->on('marcas');
-            $table->foreign('referencia')->references('id')->on('referencias');
             $table->foreign('unidad')->references('id')->on('unidads');
             $table->timestamps();
         });

@@ -22,13 +22,21 @@
 
                                     @foreach ($elementos as $elemento)
 
+                                    @php
+                                    $count = Elementoinventario::where('elemento', $elemento->id )->count();
+                                   @endphp
+
+@if ($count == 0)
+
+
+@else
+
+
                                     <div class="col-md-3 col-xl-3">
                                     <div class="card order-card" style="background:#{{$elemento->color}}" >
                                             <div class="card-block">
                                             <h5>{{$elemento->nombreelemento}}</h5>
-                                            @php
-                                            $count = Elementoinventario::where('elemento', $elemento->id )->count();
-                                           @endphp
+
                                                 <h2 class="text-right"><i class="fa fa-user f-left"></i>{{$count}}<span></span></h2>
 
                                                 <p class="m-b-0 text-right"><a class="text-white" href="{{ route('elementosinv.show', $elemento->id) }}">Ver más</a></p>
@@ -37,6 +45,10 @@
                                         </div>
                                     </div>
 
+
+
+
+@endif
                                     @endforeach
 
                                 </div>

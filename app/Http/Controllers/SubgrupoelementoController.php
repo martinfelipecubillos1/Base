@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grupoelemento;
 use App\Models\Marca;
+use App\Models\Subgrupoelemento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-class MarcaController extends Controller
+class SubgrupoelementoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +16,18 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $Marcas = Marca::paginate(5);
-       return view('marcas.index', compact('Marcas'));
+
     }
 
-       /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('marcas.crear');
+      //  dd($id);
+        return view('subgrupos.crear');
     }
 
     /**
@@ -36,17 +38,15 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
+      // dd($request->all());
+       request()->validate([
+        'nombresubgrupo' =>'required',
+        'color' =>'required',
+        ]);
+        if(request('nombresubgrupo'))
+        Subgrupoelemento::create($request->all());
 
-
-        request()->validate([
-            'nombremarca' =>'required',
-            ]);
-            if(request('nombremarca'))
-          //  Marca::create($request->all());
-
-            $id=$request->nombremarca;
-            dd($id);
-    return redirect()->route('marcas.index');
+return redirect()->route('grupos.index');
     }
 
     /**
@@ -57,7 +57,17 @@ class MarcaController extends Controller
      */
     public function show($id)
     {
-        //
+       // $Subgrupos = Subgrupoelemento::all();// $responsablespordependencias = responsablespordependencia::paginate(5);
+
+        $Subgrupos = DB::table('subgrupoelementos')
+        ->join('grupoelementos', 'grupoelementos.id', '=', 'subgrupoelementos.codigogrupo')
+        ->where('grupoelementos.id', '=', $id)
+        ->select('subgrupoelementos.*', 'grupoelementos.nombregrupo','grupoelementos.id as idg')
+        ->get();
+        $Grupos = Grupoelemento::all();
+
+//vamos a la vista index de la carpeta subgrupos
+    return view('subgrupos.index', compact('Subgrupos','id','Grupos'));
     }
 
     /**
@@ -68,8 +78,10 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        $marca = Marca::find($id);
-        return view('marcas.editar', compact('marca'));
+     // dd($id);
+     $marcas = Marca::all();
+      $Subgrupos=Subgrupoelemento::all();
+      return view("elementos.crear",compact('id','Subgrupos','marcas'));
     }
 
     /**
@@ -81,16 +93,7 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
-         //  'codigomarca' => 'required|unique:marcas',
-           'nombremarca' =>'required',
-
-            ]);
-            $cambio = $request->all();
-            $compania = Marca::find($id);
-            $compania->update($request->all());
-
-    return redirect()->route('marcas.index');
+        //
     }
 
     /**
@@ -101,8 +104,8 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('marcas')->where('id', $id)->delete();
-
-        return redirect()->route('marcas.index');
+        DB::table('subgrupoelementos')->where('id', $id)->delete();
+        $Grupos = Grupoelemento::all();
+       return view('grupos.index',compact('Grupos'));
     }
 }
